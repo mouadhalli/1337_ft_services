@@ -16,6 +16,10 @@ RUN unzip phpMyAdmin-5.0.4-all-languages.zip
 RUN rm phpMyAdmin-5.0.4-all-languages.zip
 RUN mv phpMyAdmin-5.0.4-all-languages/ /www/phpMyAdmin
 
+COPY srcs/config.inc.php /www/phpMyAdmin
+
+RUN mkdir /www/phpMyAdmin/tmp && chmod 777 /www/phpMyAdmin/tmp
+
 COPY srcs/init.sh /
 
 RUN chmod +x init.sh

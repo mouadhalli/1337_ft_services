@@ -2,7 +2,7 @@ FROM alpine:3.12
 
 RUN apk update
 RUN apk add nginx sudo bash openssl openssh \
-    && apk add openrc --no-cache 
+    && apk add openrc --no-cache
 
 RUN mkdir /www
 RUN mkdir /run/nginx
