@@ -1,5 +1,5 @@
 openrc reboot
 
-rc-service nginx start
+rc-service vsftpd start
 
 tail -F /dev/null
