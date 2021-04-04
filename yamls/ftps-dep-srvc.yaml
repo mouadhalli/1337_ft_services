@@ -30,9 +30,6 @@ metadata:
     app: ftps
 spec:
   replicas: 1
-  selector:
-    matchLabels:
-      app: ftps
   template:
     metadata:
       labels:
@@ -49,3 +46,13 @@ spec:
           name: "ftps-port-zero"
         - containerPort: 2101
           name: "ftps-port-one"
+        livenessProbe:
+          exec:
+            command:
+            - sh
+            - health.sh
+          initialDelaySeconds: 5
+          periodSeconds: 1
+  selector:
+    matchLabels:
+      app: ftps

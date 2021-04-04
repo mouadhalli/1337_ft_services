@@ -21,9 +21,7 @@ RUN mv wordpress/ /www
 COPY srcs/wp-config.php /www/wordpress
 
 COPY srcs/init.sh /
+COPY srcs/health.sh /
+RUN chmod +x init.sh health.sh
 
-RUN chmod +x init.sh
-
-EXPOSE 5050
-
-ENTRYPOINT ["sh", "/init.sh"]
+CMD ["sh", "/init.sh"]

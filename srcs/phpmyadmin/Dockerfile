@@ -21,9 +21,7 @@ COPY srcs/config.inc.php /www/phpMyAdmin
 RUN mkdir /www/phpMyAdmin/tmp && chmod 777 /www/phpMyAdmin/tmp
 
 COPY srcs/init.sh /
+COPY srcs/health.sh /
+RUN chmod +x init.sh health.sh
 
-RUN chmod +x init.sh
-
-EXPOSE 5000
-
-ENTRYPOINT ["sh", "/init.sh"]
+CMD ["sh", "/init.sh"]

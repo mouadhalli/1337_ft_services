@@ -1,5 +1,4 @@
-# minikube delete
-# minikube start
+minikube delete
 minikube start --driver=virtualbox
 minikube addons enable metallb
 
@@ -11,12 +10,10 @@ docker build -t local-mysql srcs/mysql
 docker build -t local-phpmyadmin srcs/phpmyadmin
 docker build -t local-wordpress srcs/wordpress
 docker build -t local-ftps srcs/ftps
+docker build -t local-influxdb srcs/influxdb
+docker build -t local-grafana srcs/grafana
 
 #apply yaml files
 kubectl apply -f yamls
-# kubectl apply -f yamls/nginx-dep-srvc.yaml
-# kubectl apply -f yamls/mysql-dep-srvc.yaml
-# kubectl apply -f yamls/phpmyadmin-dep-srvc.yaml
-# kubectl apply -f yamls/wordpress-dep-srvc.yaml
 
 minikube dashboard
