@@ -1,6 +1,6 @@
-process=`ps | grep vsftpd |grep -v grep|wc -l`;
+process=`ps | grep root.*vsftpd |grep -v grep|wc -l`;
 
-if [ $process -ge 1 ]
+if [ $process -eq 1 ]
 then exit 0
 else exit 1
 fi
