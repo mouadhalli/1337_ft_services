@@ -2,4 +2,4 @@ openrc reboot
 
 rc-service vsftpd start
 
-tail -F /dev/null
+tail -f /dev/null

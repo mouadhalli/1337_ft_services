@@ -14,6 +14,6 @@ docker build -t local-influxdb srcs/influxdb
 docker build -t local-grafana srcs/grafana
 
 #apply yaml files
-kubectl apply -f yamls
+kubectl apply -f srcs/yamls
 
 minikube dashboard

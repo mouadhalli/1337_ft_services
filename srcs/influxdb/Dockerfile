@@ -9,7 +9,7 @@ RUN tar xf telegraf-${TELEGRAF_V}_linux_amd64.tar.gz && \
         rm -rf *.tar.gz* telegraf-1.18.0/
 
 # INFLUXDB
-RUN apk add influxdb bash libc6-compat
+RUN apk add influxdb libc6-compat
 #CONF FILES
 RUN mkdir /etc/telegraf
 COPY /srcs/telegraf.conf /etc/telegraf

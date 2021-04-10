@@ -1,8 +1,6 @@
 FROM alpine:3.12
 
-RUN apk update && apk add openrc mariadb mariadb-common mariadb-client bash
-
-# RUN openrc reboot && /etc/init.d/mariadb setup
+RUN apk add openrc mariadb mariadb-common mariadb-client
 
 COPY srcs/mariadb-server.cnf /etc/my.cnf.d
 

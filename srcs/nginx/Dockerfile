@@ -1,11 +1,8 @@
 FROM alpine:3.12
 
-RUN apk update
-RUN apk add nginx sudo bash openssl openssh \
-    && apk add openrc --no-cache
+RUN apk add nginx openssl openssh openrc
 
 RUN mkdir /www
-RUN mkdir /run/nginx
 RUN mkdir /etc/nginx/ssl
 
 COPY srcs/default.conf /etc/nginx/conf.d

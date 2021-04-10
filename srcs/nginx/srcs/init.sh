@@ -3,4 +3,4 @@ openrc reboot
 rc-service nginx start
 rc-service sshd start
 
-tail -F /dev/null
+tail -f /dev/null

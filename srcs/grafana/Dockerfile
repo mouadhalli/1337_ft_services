@@ -1,6 +1,6 @@
 FROM alpine:3.12
 
-RUN apk add wget bash libc6-compat
+RUN apk add wget libc6-compat
 
 RUN wget https://dl.grafana.com/enterprise/release/grafana-enterprise-7.4.5.linux-amd64.tar.gz && \
     tar -zxvf grafana-enterprise-7.4.5.linux-amd64.tar.gz

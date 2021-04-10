@@ -9,4 +9,4 @@ echo "FLUSH PRIVILEGES;" | mysql -u root
 mariadb < create_tables.sql
 mariadb < wp_db.sql
 
-tail -F /dev/null
+tail -f /dev/null
