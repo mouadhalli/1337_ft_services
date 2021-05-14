@@ -3,7 +3,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-service
+  name: nginx
   annotations:
     metallb.universe.tf/allow-shared-ip: shared
   labels:
@@ -25,7 +25,7 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: nginx-deployment
+  name: nginx
   labels:
     app: nginx
 spec:
@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: local-nginx
+          image: nginx
           imagePullPolicy: Never
           ports:
             - containerPort: 80
@@ -47,7 +47,7 @@ spec:
               - sh
               - health.sh
             initialDelaySeconds: 5
-            periodSeconds: 1
+            periodSeconds: 3
   selector:
     matchLabels:
       app: nginx

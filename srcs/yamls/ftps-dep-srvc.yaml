@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ftps-service
+  name: ftps
   annotations:
     metallb.universe.tf/allow-shared-ip: shared
   labels:
@@ -22,10 +22,23 @@ spec:
        name: ftps-port-zero
   type: LoadBalancer
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ftps-pv-claim
+  labels:
+    app: ftps
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: ftps-deployment
+  name: ftps
   labels:
     app: ftps
 spec:
@@ -37,7 +50,7 @@ spec:
     spec:
       containers:
       - imagePullPolicy: Never
-        image: local-ftps
+        image: ftps
         name: ftps
         ports:
         - containerPort: 21
@@ -52,7 +65,14 @@ spec:
             - sh
             - health.sh
           initialDelaySeconds: 5
-          periodSeconds: 1
+          periodSeconds: 3
+        volumeMounts:
+        - name: ftps-persistent-storage
+          mountPath: /home/admin
+      volumes:
+      - name: ftps-persistent-storage
+        persistentVolumeClaim:
+          claimName: ftps-pv-claim
   selector:
     matchLabels:
       app: ftps

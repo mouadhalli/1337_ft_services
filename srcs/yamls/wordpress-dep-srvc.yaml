@@ -2,7 +2,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: wordpress-service
+  name: wordpress
   annotations:
     metallb.universe.tf/allow-shared-ip: shared
   labels:
@@ -18,7 +18,7 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: wordpress-deployment
+  name: wordpress
   labels:
     app: wordpress
 spec:
@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: local-wordpress
+          image: wordpress
           imagePullPolicy: Never
           ports:
             - containerPort: 5050
@@ -40,7 +40,7 @@ spec:
             - sh
             - health.sh
            initialDelaySeconds: 10
-           periodSeconds: 1
+           periodSeconds: 3
   selector:
     matchLabels:
       app: wordpress
